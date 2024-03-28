@@ -1,0 +1,4 @@
+---
+lens_package: lens
+lens_deb_source: "deb [arch=amd64] https://downloads.k8slens.dev/apt/debian stable main"
+lens_gpg_key_url: "https://downloads.k8slens.dev/keys/gpg"

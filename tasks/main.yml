@@ -1,0 +1,34 @@
+---
+- name: "Fix 'configured multiple times'"
+  ansible.builtin.file:
+    path: "/etc/apt/sources.list.d/downloads_k8slens_dev_apt_debian.list"
+    state: absent
+
+- name: "Refresh apt sources list"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: "Ensure GPG tools are installed"
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - "gpgv"
+      - "gnupg"
+
+- name: "Add GPG key"
+  ansible.builtin.apt_key:
+    url: "{{ lens_gpg_key_url }}"
+
+- name: "Add repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ lens_deb_source }}"
+    filename: "k8slens"
+    state: present
+
+- name: "Install K8s Lens"
+  ansible.builtin.apt:
+    name: "{{ lens_package }}"
+    state: present

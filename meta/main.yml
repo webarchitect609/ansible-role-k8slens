@@ -1,0 +1,22 @@
+---
+dependencies: []
+galaxy_info:
+  namespace: webarchitect609
+  role_name: k8slens
+  author: Gripinskiy Sergey
+  description: Installs Lens IDE for K8s from the official apt repo.
+  company: ''
+  license: BSD-3-Clause
+  min_ansible_version: '2.1'
+  platforms:
+    - name: Ubuntu
+      versions:
+        # 22.04 LTS
+        - jammy
+        # 20.04 LTS
+        - focal
+
+  galaxy_tags:
+    - lens
+    - k8s
+    - k8slens
